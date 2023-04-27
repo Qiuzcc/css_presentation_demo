@@ -1,0 +1,69 @@
+@import url('./common.css');
+
+/* （1）order 项目排列的次序 */
+.box_order {
+    width: 120px;
+    height: 120px;
+}
+
+.box_order span {
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+/* （2）align-self 单个项目在交叉轴上的对齐方式 */
+.box_align {
+    width: 150px;
+}
+
+.align_flex_start {
+    align-items: flex-start;
+}
+
+.align_center {
+    align-items: center;
+}
+
+.align_flex_end {
+    align-items: flex-end;
+}
+
+.align_baseline {
+    align-items: baseline;
+}
+
+.align_stretch {
+    align-items: stretch;
+}
+
+.align_self_flex_start {
+    align-self: flex-start;
+}
+
+.align_self_center {
+    align-self: center;
+}
+
+.align_self_flex_end {
+    align-self: flex-end;
+}
+
+.align_self_baseline {
+    align-self: baseline;
+}
+
+.align_self_stretch {
+    align-self: stretch;
+}
+
+/* （3）flex-grow 项目的放大比例 */
+.box_flex_grow {
+    width: 200px;
+    height: 100px;
+}
+
+/* （4）flex-shrink 项目的缩小比例 */
+.box_flex_shrink {
+    width: 500px;
+    height: 100px;
+}

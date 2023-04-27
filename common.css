@@ -1,0 +1,22 @@
+body {
+    margin: 0;
+    padding: 0 10%;
+}
+
+/* 页面一节标题 */
+.page_title {
+    text-align: center;
+}
+
+/* 正文部分容器 */
+.container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* 每个演示框的容器 */
+.wrap {
+    width: 400px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}

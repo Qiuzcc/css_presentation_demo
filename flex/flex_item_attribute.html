@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex项目属性演示</title>
+    <link rel="stylesheet" href="./flex_item_attribute.css">
+</head>
+
+<body>
+    <h2>flex项目属性演示</h2>
+
+    <div class="wrap">
+        <h4>（1）order 项目排列的次序</h4>
+        <div class="flex border ">
+            <div class="box box_order">1</div>
+            <div class="box box_order">2</div>
+            <div class="box box_order">3</div>
+        </div>
+        <div class="flex border ">
+            <div class="box box_order" style="order:3">1 <span><br>order:3</span></div>
+            <div class="box box_order" style="order:1">2 <span><br>order:1</span></div>
+            <div class="box box_order" style="order:2">3 <span><br>order:2</span></div>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <h4>（2）align-self 单个项目在交叉轴上的对齐方式</h4>
+        <form id="align-form">
+            align-items：<input type="radio" name="align" value="flex-start"> flex-start
+            <input type="radio" name="align" value="center"> center
+            <input type="radio" name="align" value="flex-end"> flex-end
+            <input type="radio" name="align" value="baseline"> baseline（所有项目的第一行文字的基线对齐）
+            <input type="radio" name="align" value="stretch" checked>
+            stretch（默认值，如果项目未设置hegiht或者为auto，占满整个交叉轴高度，5号未设置高度，可以观察一下5号的高度变化）
+        </form>
+        <br>
+        <form id="align-self-form">
+            （1号）align-self：<input type="radio" name="align-self" value="flex-start"> flex-start
+            <input type="radio" name="align-self" value="center"> center
+            <input type="radio" name="align-self" value="flex-end"> flex-end
+            <input type="radio" name="align-self" value="auto" checked> auto（表示继承容器的align-items）
+            <input type="radio" name="align-self" value="stretch"> stretch（如果未设置高度，拉伸占满交叉轴）
+            <input type="radio" name="align-self" value="baseline"> baseline（它在align-self中似乎并没有作用）
+        </form>
+        <br>
+        <div class="flex border" id="align-box">
+            <div class="box box_align" style="height:150px" id="box_align_self">1</div>
+            <div class="box box_align" style="height:100px">2</div>
+            <div class="box box_align" style="height:200px">3</div>
+            <div class="box box_align" style="height:250px">4</div>
+            <div class="box box_align" style="height:auto;">5</div>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <h4>（3）flex-grow 项目的放大比例</h4>
+        <p>取值：数字。如果一行中所有项目的flex-grow属性相同，那么它们将平分剩余空间。默认为0，即存在剩余空间也不放大</p>
+        <form id="flex_grow_form_1">
+            flex-grow：<input type="radio" name="flex_grow" value="0" checked> 0（默认值）
+            <input type="radio" name="flex_grow" value="1"> 1
+            <input type="radio" name="flex_grow" value="2"> 2
+        </form>
+        <form id="flex_grow_form_2">
+            flex-grow：<input type="radio" name="flex_grow" value="0" checked> 0（默认值）
+            <input type="radio" name="flex_grow" value="1"> 1
+            <input type="radio" name="flex_grow" value="2"> 2
+        </form>
+        <form id="flex_grow_form_3">
+            flex-grow：<input type="radio" name="flex_grow" value="0" checked> 0（默认值）
+            <input type="radio" name="flex_grow" value="1"> 1
+            <input type="radio" name="flex_grow" value="2"> 2
+        </form>
+        <br>
+        <div class="flex border">
+            <div class="box box_flex_grow" id="box_flex_grow_1">1</div>
+            <div class="box box_flex_grow" id="box_flex_grow_2">2</div>
+            <div class="box box_flex_grow" id="box_flex_grow_3">3</div>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <h4>（4）flex-shrink 项目的缩小比例</h4>
+        <p>定义项目的缩小比例，默认为1，即：如果剩余空间不足，该项目将缩小。取值：如果所有项目的flex-shrink相同，当空间不足时，所有项目等比例缩小。如果一个项目的flex-shrink=0，则当空间不足时，该项目不缩小
+        </p>
+        <form id="flex_shrink_form_1">
+            flex-grow：<input type="radio" name="flex_shrink" value="0"> 0
+            <input type="radio" name="flex_shrink" value="1" checked> 1（默认值）
+            <input type="radio" name="flex_shrink" value="5"> 5
+        </form>
+        <form id="flex_shrink_form_2">
+            flex-grow：<input type="radio" name="flex_shrink" value="0"> 0
+            <input type="radio" name="flex_shrink" value="1" checked> 1（默认值）
+            <input type="radio" name="flex_shrink" value="5"> 5
+        </form>
+        <form id="flex_shrink_form_3">
+            flex-grow：<input type="radio" name="flex_shrink" value="0"> 0
+            <input type="radio" name="flex_shrink" value="1" checked> 1（默认值）
+            <input type="radio" name="flex_shrink" value="5"> 5
+        </form>
+        <br>
+        <div class="flex border">
+            <div class="box box_flex_shrink" id="box_flex_shrink_1">1</div>
+            <div class="box box_flex_shrink" id="box_flex_shrink_2">2</div>
+            <div class="box box_flex_shrink" id="box_flex_shrink_3">3</div>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <h4>（5）flex-basis 在分配多余空间之前，项目占据的主轴宽度。浏览器会根据这个属性计算主轴是否有多余空间。默认为auto，即项目原本的大小</h4>
+    </div>
+
+    <div class="wrap">
+        <h4>（6）flex：flew-grow、flex-shrink、flex-basis三者（按先后顺序）的简写。建议优先使用 flex属性，而不是分开写三个属性</h4>
+        <ul>
+            <li>（缺省默认值）0 1 auto 项目不放大 动态缩小 宽度为项目本身宽度</li>
+            <li>auto : 1 1 auto 项目动态放大、动态缩小 宽度为项目本身宽度</li>
+            <li>none : 0 0 auto 项目不放大 不缩小 宽度为项目本身宽度</li>
+        </ul>
+    </div>
+
+    <div class="wrap">
+        <h3>
+            <a href="../index.html">返回首页</a>
+        </h3>
+    </div>
+
+    <script src="./flex_item_attribute.js"></script>
+</body>
+
+</html>

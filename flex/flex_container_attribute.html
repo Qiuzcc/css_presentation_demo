@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex容器属性演示</title>
+    <link href="./flex_container_attribute.css" rel="stylesheet">
+</head>
+
+<body>
+    <h2>flex容器属性演示</h2>
+
+    <div class="wrap">
+        <h4>（1）flex-direction 排列方向</h4>
+        <form id="direction-form">
+            flex-direction：<input type="radio" name="direction" value="row" checked> row（默认值）
+            <input type="radio" name="direction" value="row_reverse"> row-reverse
+            <input type="radio" name="direction" value="column"> column
+            <input type="radio" name="direction" value="column_reverse"> column-reverse
+        </form>
+        <br>
+        <div class="flex border direction_row" id="direction-box">
+            <div class="box box_direction">1</div>
+            <div class="box box_direction">2</div>
+            <div class="box box_direction">3</div>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <h4>（2）flex-wrap 换行方式</h4>
+        <form id="wrap-form">
+            flex-wrap：<input type="radio" name="wrap" value="nowrap" checked> nowrap（默认值）
+            <input type="radio" name="wrap" value="wrap"> wrap
+            <input type="radio" name="wrap" value="wrap_reverse"> wrap-reverse
+        </form>
+        <p>nowrap不换行的状态下，容器的宽度会被压缩</p>
+        <br>
+        <div class="flex border nowrap" id="wrap-box">
+            <div class="box box_wrap">1</div>
+            <div class="box box_wrap">2</div>
+            <div class="box box_wrap">3</div>
+            <div class="box box_wrap">4</div>
+            <div class="box box_wrap">5</div>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <h4>（3）justify-content 主轴对齐方式</h4>
+        <form id="justify-form">
+            justify-content：<input type="radio" name="justify" value="flex-start" checked> flex-start（默认值）
+            <input type="radio" name="justify" value="center"> center
+            <input type="radio" name="justify" value="flex-end"> flex-end
+            <input type="radio" name="justify" value="space-between"> space-between
+            <input type="radio" name="justify" value="space-around"> space-around
+        </form>
+        <br>
+        <div class="flex border" id="justify-box">
+            <div class="box box_justify">1</div>
+            <div class="box box_justify">2</div>
+            <div class="box box_justify">3</div>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <h4>（4）align-items 交叉轴对齐方式</h4>
+        <form id="align-form">
+            align-items：<input type="radio" name="align" value="flex-start"> flex-start
+            <input type="radio" name="align" value="center"> center
+            <input type="radio" name="align" value="flex-end"> flex-end
+            <input type="radio" name="align" value="baseline"> baseline（所有项目的第一行文字的基线对齐）
+            <input type="radio" name="align" value="stretch" checked> stretch（默认值，如果项目未设置hegiht或者为auto，占满整个交叉轴高度）
+        </form>
+        <br>
+        <div class="flex border" id="align-box">
+            <div class="box box_align" style="height:150px">1</div>
+            <div class="box box_align" style="height:100px">2</div>
+            <div class="box box_align" style="height:200px">3</div>
+            <div class="box box_align" style="height:250px">4</div>
+            <div class="box box_align" style="height:150px">5</div>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <h4>（5）flex-flow flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap</h4>
+    </div>
+
+    <div class="wrap">
+        <h4>（6）align-content 多根轴线的对齐方式（如果项目只有一根轴线，该属性不起作用！）</h4>
+        <form id="align-content-form">
+            align-content：<input type="radio" name="align" value="flex-start"> flex-start
+            <input type="radio" name="align" value="center"> center
+            <input type="radio" name="align" value="flex-end"> flex-end
+            <input type="radio" name="align" value="space-between"> space-between
+            <input type="radio" name="align" value="space-around"> space-around
+            <input type="radio" name="align" value="stretch" checked> stretch（轴线占满整个交叉轴）
+        </form>
+        <p>flex容器需要设置一个高度，才能体现出align-content不同值的表现差异（默认情况下，高度是由内容撑开的）</p>
+        <br>
+        <div class="flex border wrap" id="align-content-box" style="height: 400px;">
+            <div class="box box_align_content">1</div>
+            <div class="box box_align_content">2</div>
+            <div class="box box_align_content">3</div>
+            <div class="box box_align_content">4</div>
+            <div class="box box_align_content">5</div>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <h3>
+            <a href="../index.html">返回首页</a>
+        </h3>
+    </div>
+
+    <script src="./flex_container_attribute.js"></script>
+</body>
+
+</html>
