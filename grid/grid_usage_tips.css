@@ -1,0 +1,9 @@
+@import url(./common.css);
+
+#auto_fill_wrap {
+    grid-template-columns: repeat(auto-fill, 250px);
+}
+
+#auto_fill_wrap2 {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}

@@ -1,0 +1,31 @@
+body {
+    margin: 0;
+    padding: 0 10% 40px;
+}
+
+h2 {
+    text-align: center;
+}
+
+.grid {
+    display: grid;
+}
+
+.wrap {
+    margin-bottom: 100px;
+}
+
+.border {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    padding: 4px;
+}
+
+.box {
+    display: grid;
+    place-items: center;
+    margin: 4px;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    background-color: #91caff;
+}

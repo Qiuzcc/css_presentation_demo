@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>grid使用技巧</title>
+    <link rel="stylesheet" href="./grid_usage_tips.css">
+</head>
+
+<body>
+    <h2>grid使用技巧</h2>
+
+    <div class="wrap">
+        <h4>auto-fill 自动填充</h4>
+        <ul>
+            <li>grid-template-columns: repeat(auto-fill, 250px);</li>
+            <li>单元格的大小是固定的，但是容器的大小不确定。如果希望每一行（或每一列）容纳尽可能多的单元格，这时可以使用auto-fill关键字表示自动填充</li>
+            <li>auto-fill 即由浏览器动态决定列数，但是列宽是由用户自定义的</li>
+        </ul>
+        <div class="grid border" id="auto_fill_wrap">
+            <div class="box">1</div>
+            <div class="box">2</div>
+            <div class="box">3</div>
+            <div class="box">4</div>
+            <div class="box">5</div>
+            <div class="box">6</div>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <h4>自动多列填充（多列响应式布局）</h4>
+        <ul>
+            <li>实现：grid-template-columns: repeat(auto-fill, minmax(250px, 1fr))</li>
+            <li>auto-fill 动态决定列数，minmax()函数动态决定列宽</li>
+            <li>minmax() 给定一个宽度范围，浏览器会根据动态在其中选择一个值</li>
+            <li>实现的效果：（1）容器宽度被填满；（2）子元素的宽度是动态变化的，但保证不会小于最小值；（3）列数也是动态变化的</li>
+            <li>建议：子元素不要设置宽度，让其跟随网格宽度一起变化</li>
+            <li>提示：缩放浏览器窗口，看看会有什么变化</li>
+        </ul>
+        <div class="grid border" id="auto_fill_wrap2">
+            <div class="box">1</div>
+            <div class="box">2</div>
+            <div class="box">3</div>
+            <div class="box">4</div>
+            <div class="box">5</div>
+            <div class="box">6</div>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <h3>
+            <a href="../index.html">返回首页</a>
+        </h3>
+    </div>
+</body>
+
+</html>

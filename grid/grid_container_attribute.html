@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>grid容器属性</title>
+    <link rel="stylesheet" href="./grid_container_attribute.css">
+</head>
+
+<body>
+    <h2>grid容器属性实践演示</h2>
+    <div class="wrap">
+        <h4>（1）grid-template-columns 定义列数和每列的宽度</h4>
+        <ul>
+            <li>备注：div box没有设置宽高，width默认为100%</li>
+        </ul>
+        <form id="template_column_form">
+            grid-template-columns：
+            <input type='radio' name='template_column' value='' checked> 不设置
+            <input type='radio' name="template_column" value='200px 300px'> 200px 300px
+            <input type="radio" name="template_column" value="100px 200px 300px"> 100px 200px 300px
+        </form>
+        <br>
+        <div class="grid border" id="template_column_wrap">
+            <div class="box">1</div>
+            <div class="box">2</div>
+            <div class="box">3</div>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <h4>（2）grid-template-rows 定义每一行的高度</h4>
+        <ul>
+            <li>备注：grid子元素没有设置宽高</li>
+            <li>在没有设置grid-item的高度时，高度默认填满grid网格的高度</li>
+            <li>因为div是块级元素，所以宽度占满父容器（即单个网格）的宽度</li>
+            <li>如果不设置grid-template-rows属性，则grid的行高默认为子元素的高度</li>
+        </ul>
+        <form id="template_rows_form">
+            grid-template-rows：
+            <input type='radio' name='template_rows' value='' checked> 不设置
+            <input type='radio' name="template_rows" value='100px'> 100px
+            <input type='radio' name="template_rows" value='100px 150px'> 50px 100px
+            <input type="radio" name="template_rows" value="100px 150px 200px"> 100px 150px 200px
+        </form>
+        <br>
+        <div class="grid border" id="template_rows_wrap">
+            <div class="box">1</div>
+            <div class="box">2</div>
+            <div class="box">3</div>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <h4>（3）grid-gap 行距（grid-row-gap）和列距（grid-column-gap）的简写</h4>
+        <ul>
+            <li>备注：grid容器设置了padding:4px;</li>
+            <li>参数为2位时，行距在前，列距在后</li>
+            <li>对grid容器边界没有影响</li>
+        </ul>
+        <form id="gap_form">
+            grid-gap： <input type='radio' name='gap' value='' checked> 不设置
+            <input type='radio' name='gap' value='20px'> 20px
+            <input type='radio' name='gap' value='20px 40px'> 20px 40px
+            <input type='radio' name='gap' value='40px 20px'> 40px 20px
+        </form>
+        <br>
+        <div class="grid border" id="gap_wrap">
+            <div class="box">1</div>
+            <div class="box">2</div>
+            <div class="box">3</div>
+            <div class="box">4</div>
+            <div class="box">5</div>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <h4>（4）place-items 网格中元素的位置，水平位置（justify-items）和垂直位置（align-items）的简写</h4>
+        <ul>
+            <li>备注：网格的行高为250px，列宽为1fr，子元素的宽高为150px</li>
+            <li>为了体现不同place-items的差异，需要将子元素的宽高设置的比网格的宽高值小</li>
+            <li>子元素设置了宽高的情况下，默认值stretch将失效，子元素不会拉伸；此时取而代之的默认值是start</li>
+            <li>参数为2位时，水平位置在前，垂直位置在后</li>
+        </ul>
+        <form id="place_form">
+            place-items：
+            <input type='radio' name='place' value='start'> start
+            <input type='radio' name='place' value='center'> center
+            <input type='radio' name='place' value='end'> end
+            <input type='radio' name='place' value='stretch' checked> stretch（默认值）
+            <input type='radio' name='place' value='start end'> start end
+        </form>
+        <br>
+        <div class="grid border" id="place_wrap">
+            <div class="box">1</div>
+            <div class="box">2</div>
+            <div class="box">3</div>
+            <div class="box">4</div>
+            <div class="box">5</div>
+        </div>
+        <ul>
+            <li>子元素没有设置宽高的情况下，默认值为stretch，子元素将被拉伸只网格同样大小（如下所示）</li>
+            <li>备注：第一个子元素设置了宽高100px，其余子元素未设置宽高，网格行高为150px，列宽为1fr</li>
+        </ul>
+        <div class="grid border" id="place_wrap2">
+            <div class="box" style="height:100px; width:100px;">1</div>
+            <div class="box">2</div>
+            <div class="box">3</div>
+            <div class="box">4</div>
+            <div class="box">5</div>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <h4>（5）grid-template-areas 区域化网格</h4>
+        <ul>
+            <li>使用方式：容器使用 <code>grid-template-areas</code> 声明网格区域，子元素使用 <code>grid-area</code> 指定占用的网格区域</li>
+            <li>注意：（1）area名字需要填满所有网格</li>
+            <li>注意：（2）同一个area名只能出现在连续的网格中</li>
+            <li>注意：（3）连续网格必须组成一个正方形</li>
+        </ul>
+        <div class="grid border" id="area_wrap">
+            <div class="box header">header</div>
+            <div class="box aside">aside</div>
+            <div class="box main">main</div>
+            <div class="box footer">footer</div>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <h4>（6）grid-auto-flow 容器布局流</h4>
+        <ul>
+            <li>划分网格以后，容器的子元素会按照顺序，自动放置在每一个网格。取值范围如下：</li>
+            <li>（1）row（先行后列），指定列数，从左到右、从上到下填充网格元素，必要时自动增加新行 </li>
+            <li>（2）column（先列后行），指定行数，从上到下、从左到右填充网格元素，必要时自动增加新列</li>
+            <li>（3）dense，先行后列，如果本行的剩余单元格放不下下一个元素，将试图用后面较小的子元素填补这个空白的空间</li>
+        </ul>
+        <p>grid-auto-flow: row （需要指定列数，grid-template-columns: 1fr 1fr 1fr;）</p>
+        <div class="grid border" id="flow_wrap_1">
+            <div class="box">1</div>
+            <div class="box">2</div>
+            <div class="box">3</div>
+            <div class="box">4</div>
+            <div class="box">5</div>
+        </div>
+        <br>
+        <p>grid-auto-flow: column （需要指定行数，列宽平均分）</p>
+        <form id="flow_form2">
+            行数：<input type='radio' name='flow' value='50px 50px'> 两行
+            <input type='radio' name='flow' value='50px 50px 50px' checked> 三行
+        </form>
+        <br>
+        <div class="grid border" id="flow_wrap_2">
+            <div class="box">1</div>
+            <div class="box">2</div>
+            <div class="box">3</div>
+            <div class="box">4</div>
+            <div class="box">5</div>
+        </div>
+        <br>
+        <p>grid-auto-flow: dense （1，2各占用两个单元格）</p>
+        <form id="flow_form3">
+            <input type='radio' name='flow' value='row'> row（严格按顺序排列，不填充空白）
+            <input type='radio' name='flow' value='dense' checked> dense （用较小元素填充前面留下的空白，但是可能会打乱元素次序）
+        </form>
+        <br>
+        <div class="grid border" id="flow_wrap_3">
+            <div class="box">1</div>
+            <div class="box">2</div>
+            <div class="box">3</div>
+            <div class="box">4</div>
+            <div class="box">5</div>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <h3>
+            <a href="../index.html">返回首页</a>
+        </h3>
+    </div>
+
+    <script src="./grid_container_attribute.js"></script>
+</body>
+
+</html>
