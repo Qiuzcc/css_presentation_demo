@@ -28,7 +28,9 @@
 		"prefix": "docu",
 		"body": [
 			"document.getElementById('$1').addEventListener('click',(e)=>{",
-			"    $2",
+			"    if(e.target.name === '$2') {",
+			"        $3",
+			"    }",
 			"})"
 		],
 		"description": "getElementById and addEventListener"
@@ -40,5 +42,24 @@
 			"<input type='radio' name='$1' value='$2'> $3"
 		],
 		"description": "radio input"
+	},
+	"form timegogo": {
+		"scope": "html",
+		"prefix": "form",
+		"body": [
+			"<form id='$1'>",
+			"    $2",
+			"</form>",
+			"<br>",
+		],
+		"description": "form timegogo"
+	},
+	"setAttribute": {
+		"scope": "javascript,typescript",
+		"prefix": "setA",
+		"body": [
+			"setAttribute('style', `$1:${e.target.value}`)"
+		],
+		"description": "setAttribute timegogo"
 	}
 }

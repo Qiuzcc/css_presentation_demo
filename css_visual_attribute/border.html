@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>border探究</title>
+    <link rel="stylesheet" href="./border.css">
+</head>
+
+<body>
+    <h2>border探究</h2>
+    <p>border是border-width、border-style、border-color三个属性的合并简写</p>
+    <div class="wrap">
+        <h4>（1）border 探究</h4>
+        <form id='width_form'>
+            border-width:
+            <input type='radio' name='width' value='1px'> 1px
+            <input type='radio' name='width' value='5px' checked> 5px
+            <input type='radio' name='width' value='20px'> 20px
+        </form>
+        <br>
+        <form id='style_form'>
+            border-style:
+            <input type='radio' name='style' value='dotted'>dotted（点）
+            <input type='radio' name='style' value='dashed'>dashed（虚线）
+            <input type='radio' name='style' value='solid' checked>solid（实线）
+            <input type='radio' name='style' value='double'>double（双线）
+        </form>
+        <br>
+        <form id='color_form'>
+            border-color:
+            <input type='radio' name='color' value='blue' checked> blue
+            <input type='radio' name='color' value='red'> blue
+            <input type='radio' name='color' value='greed'> green
+        </form>
+        <br>
+        <form id='radius_form'>
+            border-radius:
+            <input type="range" step="1" min="0" max="60" name="radius" value="0">
+            <span id='radius_text'></span>（最大有效值为50%，超过50%就不发生变化了）
+        </form>
+        <br>
+        <div id="box1"></div>
+    </div>
+
+    <div class="wrap">
+        <h4>（2）border的4条边</h4>
+        <ul>
+            <li>border 实际上同时代表了4个属性：border-top, border-right, border-bottom, border-left</li>
+            <li>这4个属性的取值与border相同，（不区分先后顺序）分别是：width、style、color</li>
+            <li>尝试一下，画透视图效果不错！（滑稽）</li>
+        </ul>
+        <form id='top_width_form'>
+            border-top-width: <input type="range" step="1" min="1" max="100" name="width" value="1">
+            <span id="top_width_text"></span>px
+        </form>
+        <form id='right_width_form'>
+            border-right-width: <input type="range" step="1" min="1" max="100" name="width" value="1">
+            <span id="right_width_text"></span>px
+        </form>
+        <form id='bottom_width_form'>
+            border-bottom-width: <input type="range" step="1" min="1" max="100" name="width" value="1">
+            <span id="bottom_width_text"></span>px
+        </form>
+        <form id='left_width_form'>
+            border-left-width: <input type="range" step="1" min="1" max="100" name="width" value="1">
+            <span id="left_width_text"></span>px
+        </form>
+        <form id='content_size_form'>
+            content_size: <input type="range" step="1" min="1" max="100" name="size" value="100">
+            <span id="content_size_text"></span>px
+        </form>
+        <br>
+        <div id="box2"></div>
+    </div>
+
+    <!-- 从以下部分开始引入petie-vue -->
+    <div class="wrap" v-scope id="radius_wrap">
+        <h4>（3）border-radius 探究</h4>
+        <ul>
+            <li>单独的border-radius属性已经在（1）中探究，下面探究border-top-left-radius等属性</li>
+            <li>不同的属性组合，可以绘制出多种不同的图形，尝试一下，说不定有惊喜！</li>
+        </ul>
+        <form @click="toggleRadius">
+            border-width:
+            <input type="range" step="1" min="1" max="100" v-model="border_width">
+            {{border_width + 'px'}}
+            <br>
+
+            border-top-left-radius:
+            <input type="range" step="1" min="0" max="50" v-model="TL_radius">
+            {{TL_radius + '%'}}
+            <br>
+
+            border-top-right-radius:
+            <input type="range" step="1" min="0" max="50" v-model="TR_radius">
+            {{TR_radius + '%'}}
+            <br>
+
+            border-bottom-left-radius:
+            <input type="range" step="1" min="0" max="50" v-model="BL_radius"> {{BL_radius + '%'}}
+            <br>
+
+            border-bottom-right-radius:
+            <input type="range" step="1" min="0" max="50" v-model="BR_radius"> {{BR_radius + '%'}}
+            <br>
+
+            content-size:
+            <input type="range" step="1" min="0" max="100" v-model="content_size"> {{content_size + 'px'}}
+        </form>
+        <br>
+        <div id="box3" :style="style"></div>
+    </div>
+
+    <div class="wrap">
+        <h4>（4）利用border绘制三角形</h4>
+        <ul>
+            <li>当content的size为0，border的width不为0时，4个三角形就出现了</li>
+            <li>还可以通过在4个三角形当中两两组合，又可以形成三角形，组合的方式就是让另外两个三角形的颜色变为transparent透明</li>
+            <li>在上面几个例子中，已经可以实现三角形的效果了，去试一试吧</li>
+        </ul>
+    </div>
+
+    <div class="wrap">
+        <h3>
+            <a href="../index.html">返回首页</a>
+        </h3>
+    </div>
+    </div>
+
+    <script src="./border.js"></script>
+    <script type="module">
+        // 开始使用 petie-vue，不能再将js拆分成单独的文件，否则会因为被识别为跨域被同源策略限制
+        import { createApp } from 'https://unpkg.com/petite-vue?module'
+
+        // （3）border-radius 探究
+        createApp({
+            border_width: 10,
+            TL_radius: 0,
+            TR_radius: 0,
+            BL_radius: 0,
+            BR_radius: 0,
+            content_size: 100,
+            style: '',
+
+            // 因为petie-vue不支持computed，所以需要通过监听click事件来响应式改变style
+            toggleRadius(e) {
+                this.style = `border-width:${this.border_width}px;
+                border-top-left-radius:${this.TL_radius}%;
+                border-top-right-radius:${this.TR_radius}%;
+                border-bottom-left-radius:${this.BL_radius}%;
+                border-bottom-right-radius:${this.BR_radius}%;
+                width:${this.content_size}px;
+                height:${this.content_size}px;`
+                console.log(this.style)
+            }
+        }).mount('#radius_wrap')
+    </script>
+</body>
+
+</html>

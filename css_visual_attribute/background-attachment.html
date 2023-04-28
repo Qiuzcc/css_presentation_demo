@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>background-attachment属性演示</title>
+    <link rel="stylesheet" href="./common.css">
+    <style>
+        body {
+            height: 150vh;
+            background-image: url('./img.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>background-attachment属性演示</h2>
+    <ul>
+        <li>设置背景图像是否固定或者随着页面的其余部分滚动</li>
+        <li>scroll，（默认），背景图像会随着页面其余部分的滚动而移动</li>
+        <li>fixed，当页面的其余部分滚动时，背景图像不会移动</li>
+    </ul>
+    <form id='attachment_form'>
+        background-attachment：
+        <input type='radio' name='atta' value='scroll' checked> scroll（默认）
+        <input type='radio' name='atta' value='fixed'> fixed
+    </form>
+
+    <div class="wrap">
+        <h3>
+            <a href="../index.html">返回首页</a>
+        </h3>
+    </div>
+
+    <script>
+        document.getElementById('attachment_form').addEventListener('click', (e) => {
+            if (e.target.name === 'atta') {
+                document.body.setAttribute('style', `background-attachment:${e.target.value}`)
+            }
+        })
+    </script>
+</body>
+
+</html>

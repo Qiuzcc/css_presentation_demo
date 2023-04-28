@@ -1,0 +1,45 @@
+@import url(./common.css);
+
+#clip_box {
+    width: 200px;
+    height: 150px;
+    padding: 50px;
+    border: 5px dashed blue;
+    background-color: #69b1ff;
+}
+
+.auto_columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 16px;
+}
+
+#linear_gradient_box {
+    width: 200px;
+    height: 150px;
+    background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+}
+
+#radial_gradient_box {
+    width: 200px;
+    height: 150px;
+    background-image: radial-gradient(red, yellow, black);
+}
+
+#image_box {
+    width: 400px;
+    height: 300px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    background-image: url('./img.jpg');
+}
+
+#origin_box {
+    width: 250px;
+    height: 200px;
+    padding: 20px;
+    border: 10px dashed blue;
+    background-image: url('./img.jpg');
+    background-repeat: no-repeat;
+    background-size: 120px 120px;
+    background-position: top left;
+}

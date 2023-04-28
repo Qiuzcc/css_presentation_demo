@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>background属性探究</title>
+    <link rel="stylesheet" href="./background.css">
+</head>
+
+<body>
+    <h2>background属性探究</h2>
+
+    <div class="wrap">
+        <h4>（1）background-clip 背景的绘制位置</h4>
+        <form id="clip_form">
+            background-clip：
+            <input type='radio' name='clip' value='border-box' checked> border-box（默认，背景被裁剪到边框盒）
+            <input type='radio' name='clip' value='padding-box'> padding-box（背景被裁剪到内边距框）
+            <input type='radio' name='clip' value='content-box'> content-box（背景被裁剪到内容框）
+        </form>
+        <br>
+        <div id="clip_box">蓝色为背景部分</div>
+    </div>
+
+    <div class="wrap">
+        <h4>（2）background-image 设置背景图像</h4>
+        <ul>
+            <li>none，不显示背景图像；inherit，继承父元素</li>
+            <li>url('') 图像文件链接</li>
+            <li>linear-gradient() 线性渐变</li>
+            <li>radial-gradient() 径向渐变</li>
+        </ul>
+        <div class="auto_columns">
+            <div id="linear_gradient_box"></div>
+            <div id="radial_gradient_box"></div>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <h4>（3）背景图片的处理</h4>
+        <ul>
+            <li>background-size：背景图片大小</li>
+            <li>background-repeat：背景图片是否重复</li>
+            <li>background-position：背景图片的位置，两个参数：分别是x轴和y轴的位置；支持三种值：top left, x% y%, x px y px</li>
+        </ul>
+        <form id='size_form'>
+            background-size：
+            <input type='radio' name='size' value='' checked> 默认为图片原始尺寸
+            <br>
+            <input type='radio' name='size' value='cover'> cover（等比缩放，直到宽高都覆盖了背景区域）
+            <br>
+            <input type='radio' name='size' value='contain'> contain（等比缩放，宽、高其中之一达到背景区域即可）
+            <br>
+            <input type='radio' name='size' value='50% 50%'> 50% 50%（宽度、高度占父元素的百分比）
+            <br>
+            <input type='radio' name='size' value='50%'> 50%（只提供一个参数，高度默认为auto）
+            <br>
+            <input type='radio' name='size' value='100px 100px'> 100px 100px（直接设置宽高）
+        </form>
+        <br>
+        <form id='repeat_form'>
+            background-repeat：
+            <input type='radio' name='repeat' value='repeat' checked> repeat（默认）
+            <input type='radio' name='repeat' value='no-repeat'> no-repeat
+            <input type='radio' name='repeat' value='repeat-x'> repeat-x
+            <input type='radio' name='repeat' value='repeat-y'> repeat-y
+        </form>
+        <br>
+        <form id='position_form'>
+            background-position：
+            <input type='radio' name='position' value='top left' checked> top left（默认）
+            <input type='radio' name='position' value='center'> center
+            <input type='radio' name='position' value='bottom right'> bottom right
+        </form>
+        <br>
+        <div id="image_box"></div>
+    </div>
+
+    <div class="wrap">
+        <h4>（4）backgroun-origin 规定 background-position 属性相对于什么位置来定位</h4>
+        <p>如果背景图像的 background-attachment 属性为 “fixed”，则该属性没有效果！</p>
+        <form id='origin_form'>
+            backgroud-origin：
+            <input type='radio' name='origin' value='border-box'> border-box
+            <input type='radio' name='origin' value='padding-box' checked> padding-box（默认值）
+            <input type='radio' name='origin' value='content-box'> content-box
+        </form>
+        <br>
+        <div id="origin_box"></div>
+    </div>
+
+    <div class="wrap">
+        <h3>
+            <a href="../index.html">返回首页</a>
+        </h3>
+    </div>
+
+    <script src="./background.js"></script>
+</body>
+
+</html>

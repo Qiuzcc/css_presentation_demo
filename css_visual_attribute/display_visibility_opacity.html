@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>display、visibility、opacity 比较和继承性探究</title>
+    <link rel="stylesheet" href="./display_visibility_opacity.css">
+</head>
+
+<body>
+    <h2>display、visibility、opacity 比较和继承性探究</h2>
+    <p>关于display、visibility、opacity三者的细节，和对比概览查看另一篇文章：
+        <a
+            href="https://www.timegogo.top/2023/02/16/CSS/CSS%EF%BC%88%E5%9B%9B%EF%BC%89%E8%A7%86%E8%A7%89%E5%B1%9E%E6%80%A7/">
+            CSS（四）视觉属性</a>
+    </p>
+
+    <div class="wrap">
+        <h4>视觉上的特征比较</h4>
+        <ul>
+            <li>display:none，不渲染元素</li>
+            <li>visibility:hidden，渲染元素，但是不绘制元素，元素所在位置会被占用</li>
+            <li>opacity:0，渲染元素，绘制元素，只是元素透明度为0，看不见而已</li>
+        </ul>
+        <div class="auto_columns">
+            <section class="border">
+                <p>display:none</p>
+                <ul>
+                    <li>元素一</li>
+                    <li style="display: none;">元素二</li>
+                    <li>元素三</li>
+                </ul>
+            </section>
+            <section class="border">
+                <p>visibility:hidden</p>
+                <ul>
+                    <li>元素一</li>
+                    <li style="visibility:hidden;">元素二</li>
+                    <li>元素三</li>
+                </ul>
+            </section>
+            <section class="border">
+                <p>opacity:0</p>
+                <ul>
+                    <li>元素一</li>
+                    <li style="opacity:0;">元素二</li>
+                    <li>元素三</li>
+                </ul>
+            </section>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <h4>子元素的表现</h4>
+        <ul>
+            <li>display:none不存在继承性一说，因为父元素没有渲染，意味着所有子元素都不会被渲染</li>
+            <li>visibility和opacity都具有继承性</li>
+            <li>父元素设置visibility:hidden，子元素可以通过设置visibility:visible重新显示出来</li>
+            <li>父元素设置opacity:1，子元素无法通过改变opacity显示出来</li>
+        </ul>
+        <div class="auto_columns">
+            <section class="border">
+                <p>原始状态</p>
+                <div class="outer_box">
+                    outter_box
+                    <div class="middle_box">
+                        middle_box
+                        <div class="inner_box">inner_box</div>
+                    </div>
+                </div>
+            </section>
+            <section class="border">
+                <p>display:none</p>
+                <div class="outer_box" style="display: none;">
+                    outter_box
+                    <div class="middle_box" style="display: block;">
+                        middle_box
+                        <div class="inner_box">inner_box</div>
+                    </div>
+                </div>
+            </section>
+            <section class="border">
+                <p>visibility:hidden</p>
+                <div class="outer_box" style="visibility:hidden;">
+                    outter_box
+                    <div class="middle_box" style="visibility:visible;">
+                        middle_box
+                        <div class="inner_box">inner_box</div>
+                    </div>
+                </div>
+            </section>
+            <section class="border">
+                <p>opacity:0</p>
+                <div class="outer_box" style="opacity: 0;">
+                    outter_box
+                    <div class="middle_box" style="opacity: 1;">
+                        middle_box
+                        <div class="inner_box">inner_box</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="wrap">
+            <h3>
+                <a href="../index.html">返回首页</a>
+            </h3>
+        </div>
+    </div>
+</body>
+
+</html>

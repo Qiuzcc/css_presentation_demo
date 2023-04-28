@@ -1,0 +1,25 @@
+@import url(./common.css);
+
+.auto_columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-gap: 16px;
+}
+
+.outer_box {
+    width: 150px;
+    height: 150px;
+    background-color: #b37feb;
+}
+
+.middle_box {
+    width: 110px;
+    height: 110px;
+    background-color: #ffd666;
+}
+
+.inner_box {
+    width: 80px;
+    height: 80px;
+    background-color: #d3f261;
+}

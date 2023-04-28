@@ -1,0 +1,21 @@
+body {
+    margin: 0;
+    padding: 0 10% 50px;
+}
+
+h2 {
+    text-align: center;
+}
+
+.wrap {
+    margin-bottom: 100px;
+}
+
+.border {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    padding: 4px;
+}
+
+.flex {
+    display: flex;
+}

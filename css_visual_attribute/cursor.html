@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cursor 鼠标光标</title>
+    <link rel="stylesheet" href="./common.css">
+    <style>
+        body {
+            height: 90vh;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>cursor 控制鼠标光标形状</h2>
+    <p>本页主要演示不同的光标形状</p>
+    <p>更多形状请查看：<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/cursor">cursor - MDN</a></p>
+    <form id="form">
+        cursor:
+        <input type='radio' name="cursor" value="default"> default
+        <br>
+        <input type='radio' name='cursor' value='auto' checked> auto（默认值）
+        <br>
+        <input type='radio' name='cursor' value='pointer'> pointer
+        <br>
+        <input type='radio' name="cursor" value="move"> move
+        <br>
+        <input type='radio' name='cursor' value='crosshair'> crosshair
+        <br>
+        <input type='radio' name='cursor' value='text'> text
+        <br>
+        <input type='radio' name='cursor' value='wait'> wait
+        <br>
+        <input type='radio' name='cursor' value='help'> help
+        <br>
+        <input type='radio' name='cursor' value='zoom-in'> zoom-in
+        <br>
+        <input type='radio' name='cursor' value='not-allowed'> not-allowed
+    </form>
+    <br>
+    <div class="wrap">
+        <h3>
+            <a href="../index.html">返回首页</a>
+        </h3>
+    </div>
+
+    <script type="module">
+        var body = document.body
+        document.getElementById('form').addEventListener('click', (e) => {
+            if (e.target.name === 'cursor') {
+                body.setAttribute('style', `cursor:${e.target.value}`)
+            }
+        })
+    </script>
+</body>
+
+</html>
