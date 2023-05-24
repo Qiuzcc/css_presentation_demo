@@ -1,0 +1,64 @@
+body {
+    margin: 0;
+    padding: 0 10% 40px;
+}
+
+h2 {
+    text-align: center;
+}
+
+.border {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    margin-bottom: 4px;
+}
+
+.wrap {
+    margin-bottom: 100px;
+}
+
+.row {
+    display: flex;
+}
+
+.column {
+    width: 400px;
+    margin-right: 96px;
+}
+
+#btn_1:hover {
+    transform: scale(1.2);
+}
+
+#input_1:focus {
+    background-color: antiquewhite;
+}
+
+.nth div:nth-child(even) {
+    color: red;
+}
+
+#context_1::first-letter {
+    font-size: 1.5rem;
+}
+
+.error {
+    position: relative;
+    display: inline-block;
+    padding: 12px 30px;
+    /* 设置一个左padding，是为了放下before内的元素 */
+}
+
+.error::before {
+    /* content必须设置，即使为空 */
+    content: '';
+
+    background-image: url(../asset/error.svg);
+    background-size: 15px;
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    /* 相对定位，修正before元素的位置 */
+    position: absolute;
+    left: 10px;
+    top: 15px;
+}

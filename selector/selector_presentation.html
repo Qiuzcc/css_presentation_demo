@@ -2,14 +2,116 @@
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSS选择器演示</title>
-    <link href="../common.css" rel="stylesheet">
-    <style>
-    </style>
+    <link rel="stylesheet" href="../asset/prism/prism.css">
+    <link rel="stylesheet" href="./common.css">
 </head>
 
 <body>
+    <h2>本页主要展示一些不常见的选择器用法，包括：伪类、伪元素、选择器组合</h2>
+    <h3>一、伪类</h3>
+    <h4>「伪类」，以冒号:开头，用于选择处于特定状态的元素</h4>
+    <section class="wrap">
+        <h4>（1）动态伪类</h4>
+        <div class="row">
+            <div class="column">
+                <div class="border" style="padding: 16px;">
+                    <button id="btn_1">鼠标悬浮效果</button>
+                </div>
+                <div class="border">
+                    <pre><code class="language-css">#btn_1:hover {
+    transform: scale(1.2);
+}</code></pre>
+                </div>
+            </div>
 
+            <div class="column">
+                <div class="border" style="padding: 16px;">
+                    <input type="text" id="input_1" placeholder="聚焦效果">
+                </div>
+                <div class="border">
+                    <pre><code class="language-css">#input_1:focus {
+    background-color: antiquewhite;
+}</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="wrap">
+        <h4>（2）结构伪类</h4>
+        <div class="row">
+            <div class="column">
+                <div class="border nth" style="padding: 16px;">
+                    <div>第1行</div>
+                    <div>第2行</div>
+                    <div>第3行</div>
+                    <div>第4行</div>
+                    <div>第5行</div>
+                    <div>第6行</div>
+                </div>
+                <div class="border">
+                    .nth指容器，div指每一行，div:nth-child(even)指所有偶数元素
+                    <pre><code class="language-css">.nth div:nth-child(even) {
+    color: red;
+}</code></pre>
+                </div>
+            </div>
+            <div class="column">
+
+            </div>
+        </div>
+    </section>
+
+    <h3>二、伪元素</h3>
+    <h4>「伪元素」，以双冒号::开头，用于在文档中插入虚构的元素</h4>
+    <section class="wrap">
+        <div class="row">
+            <div class="column">
+                <div class="border" id="context_1" style="padding: 16px;">
+                    Hello world
+                </div>
+                <div class="border">
+                    <pre><code class="language-css">#context_1::first-letter {
+    font-size: 1.5rem;
+}</code></pre>
+                </div>
+            </div>
+
+            <div class="column" style="width:600px;">
+                <div class="border" style="padding: 16px;">
+                    <div class="error">出错了！</div>
+                </div>
+                <div class="border">
+                    <pre><code class="language-css">.error {
+    position: relative;
+    display: inline-block;
+    padding: 12px 30px;
+    /* 设置一个左padding，是为了放下before内的元素 */
+}
+
+.error::before {
+    /* content必须设置，即使为空 */
+    content: '';
+    background-image: url(../asset/error.svg);
+    background-size: 15px;
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    /* 相对定位，修正before元素的位置 */
+    position: absolute;
+    left: 10px;
+    top: 15px;
+}</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="../asset/prism/prism.js"></script>
 </body>
 
 </html>

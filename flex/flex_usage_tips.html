@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex使用技巧</title>
+    <link rel="stylesheet" href="./flex_usage_tips.css">
+</head>
+
+<body>
+    <h2>Flex使用技巧</h2>
+    <div class="wrap">
+        <h4>（1）flex实现自动多列布局</h4>
+        <ul>
+            <li>实现核心：wrap自动换行、flex-grow自动放大、flex-shrink不缩小</li>
+            <li>缺点：最后一行的宽度可能与前面不一致，排版不协调（grid自动多列布局没有这个问题）</li>
+            <li>flex-grow：0（默认值，不放大）</li>
+            <li>flex-shrink：1（默认值，自动根据需要缩小）</li>
+            <li>flex是flex-grow, flex-shrink, flex-basis三者的简写属性</li>
+            <li>flex:1 代表flex-grow:1; flex-shrink:1; flex-basis:0%;（无法实现）</li>
+            <li>flex:1 0;（无效）</li>
+            <li>flex:1 0 auto;（可以实现下面效果）</li>
+            <li>flex-grow:1;（也可以实现下面效果）</li>
+        </ul>
+        <br>
+        <div class="flex border wrap">
+            <div class="box box_auto_columns">1</div>
+            <div class="box box_auto_columns">2</div>
+            <div class="box box_auto_columns">3</div>
+            <div class="box box_auto_columns">4</div>
+            <div class="box box_auto_columns">5</div>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <h3>
+            <a href="../index.html">返回首页</a>
+        </h3>
+    </div>
+</body>
+
+</html>

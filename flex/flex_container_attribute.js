@@ -56,6 +56,9 @@ document.getElementById('justify-form').addEventListener('click', (e) => {
         case 'space-around':
             justify_box.className = 'flex border justify_space_around'
             break
+        case 'space-evenly':
+            justify_box.className = 'flex border justify_space_evenly'
+            break
     }
 })
 

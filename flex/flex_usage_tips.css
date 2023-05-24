@@ -1,0 +1,14 @@
+@import url(./common.css);
+
+/* （1）flex实现自动多列布局 */
+.wrap {
+    flex-wrap: wrap;
+}
+
+.box_auto_columns {
+    width: 300px;
+    height: 100px;
+    /* flex-grow: 1; */
+    /* flex: 1 0 auto; */
+    flex: 1 0 auto;
+}
