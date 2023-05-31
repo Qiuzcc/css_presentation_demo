@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>float探究</title>
+    <link rel="stylesheet" href="../asset/prism/prism.css">
+    <link rel="stylesheet" href="./float.css">
+</head>
+
+<body>
+    <h2>float浮动定位的特点 & 清除浮float副作用的方法</h2>
+    <section class="wrap">
+        <h3>一、float浮动定位的特点</h3>
+        <div class="row">
+            <div class="column">
+                <h4>（1）高度塌陷（父容器不计算float元素的高度）</h4>
+                <div class="border" id="border1_1">
+                    <div id="box1_1_1">红色虚线边框的是正常div</div>
+                    <div id="box1_1_2">蓝色实线边框的是float浮动元素</div>
+                </div>
+                <pre><code class="language-css">#box1_1_1 {
+    border: 10px dashed red;
+    width: 200px;
+    height: 100px;
+}
+
+#box1_1_2 {
+    border: 5px solid blue;
+    width: 160px;
+    height: 80px;
+    float: left;
+}
+</code></pre>
+            </div>
+
+            <div class="column">
+                <h4>（2）元素覆盖（float元素脱离文档流，导致float元素盖住其它元素，且这种覆盖关系无法通过z-index改变）</h4>
+                <div class="border">
+                    <div id="box1_2_1">蓝色实线边框的是float浮动元素</div>
+                    <div id="box1_2_2">红色虚线边框的是正常div</div>
+                </div>
+                <pre><code class="language-css">#box1_2_1 {
+    float: left;
+    border: 5px solid blue;
+    width: 160px;
+    height: 80px;
+    z-index: 1;
+    /* z-index无法解决float带来的元素遮盖问题 */
+}
+
+#box1_2_2 {
+    border: 10px dashed red;
+    width: 200px;
+    height: 100px;
+    z-index: 2;
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column">
+                <h4>（3）浮动元素之间不会重叠</h4>
+                <div class="border">
+                    <div id="box1_3_1"></div>
+                    <div id="box1_3_2"></div>
+                    <div id="box1_3_3"></div>
+                </div>
+                <pre><code class="language-css">#box1_3_1 {
+    width: 200px;
+    height: 100px;
+    float: left;
+    border: 5px solid blue;
+}
+
+#box1_3_2 {
+    width: 200px;
+    height: 100px;
+    float: left;
+    border: 5px dashed green;
+}
+
+#box1_3_3 {
+    clear: both;
+    /* 用来清除浮动 */
+}</code></pre>
+            </div>
+
+            <div class="column">
+                <h4>（4）浮动元素如果不设置宽度，又没有内容，默认宽度为0（float元素变成了inline-block元素，inline-block的宽高度由内容决定）</h4>
+                <div class="border">
+                    <div id="box1_4_1"></div>
+                    <div id="box1_4_2">第二个float元素</div>
+                    <div id="box1_4_3"></div>
+                </div>
+                <pre><code class="language-css">#box1_4_1 {
+    float: left;
+    border: 5px solid blue;
+}
+
+#box1_4_2 {
+    float: left;
+    border: 5px dashed green;
+}
+
+#box1_4_3 {
+    clear: both;
+    /* 用来清除浮动 */
+}</code></pre>
+            </div>
+        </div>
+    </section>
+
+
+    < class="wrap">
+        <h3>二、清除float副作用的方法</h3>
+        <div class="row">
+            <div class="column">
+                <h4>（1）添加子元素并设置clear（解决“元素覆盖”+“高度塌陷”）</h4>
+                <div class="border">
+                    <div id="box2_1_1"></div>
+                    <div id="box2_1_2"></div>
+                </div>
+                <pre><code class="language-css">#box2_1_1 {
+    float: left;
+    width: 250px;
+    height: 200px;
+    border: 5px solid blue;
+}
+
+#box2_1_2 {
+    width: 300px;
+    height: 100px;
+    border: 10px dashed red;
+}</code></pre>
+            </div>
+
+            <div class="column">
+                <h4>解决效果：</h4>
+                <div class="border">
+                    <div id="box2_1_3"></div>
+                    <div id="box2_1_3_"></div>
+                    <div id="box2_1_4"></div>
+                </div>
+                <pre><code class="language-css">#box2_1_3 {
+    float: left;
+    width: 250px;
+    height: 200px;
+    border: 5px solid blue;
+}
+
+/* 在float元素后添加一个空的block元素（必须是块级元素），并设置clear属性 */
+#box2_1_3_ {
+    clear: both;
+}
+
+#box2_1_4 {
+    width: 300px;
+    height: 100px;
+    border: 10px dashed red;
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column">
+                <h4>（2）父元素的after伪元素设置clear（只能解决“高度塌陷”）</h4>
+                <div class="border">
+                    <div id="box2_2_1"></div>
+                    <div id="box2_2_2"></div>
+                </div>
+                <pre><code class="language-css">#box2_2_1 {
+    float: left;
+    width: 250px;
+    height: 200px;
+    border: 5px solid blue;
+}
+
+#box2_2_2 {
+    width: 300px;
+    height: 100px;
+    border: 10px dashed red;
+}</code></pre>
+            </div>
+
+            <div class="column">
+                <h4>解决效果：</h4>
+                <div class="border" id="border2_2">
+                    <div id="box2_2_3"></div>
+                    <div id="box2_2_4"></div>
+                </div>
+                <pre><code class="language-css">#box2_2_1 {
+float: left;
+width: 250px;
+height: 200px;
+border: 5px solid blue;
+}
+
+#box2_2_2 {
+width: 300px;
+height: 100px;
+border: 10px dashed red;
+}
+
+#border2_2::after {
+    content: '';
+    display: block;
+    /* 只能为block，不能为inline-block */
+    clear: both;
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column">
+                <h4>（3）父元素触发BFC（只能解决“高度塌陷”）</h4>
+                <div class="border">
+                    <div id="box2_3_1"></div>
+                    <div id="box2_3_2"></div>
+                </div>
+                <pre><code class="language-css">#box2_3_1 {
+    float: left;
+    width: 250px;
+    height: 200px;
+    border: 5px solid blue;
+}
+
+#box2_3_2 {
+    width: 300px;
+    height: 100px;
+    border: 10px dashed red;
+}</code></pre>
+            </div>
+
+            <div class="column">
+                <h4>解决效果：</h4>
+                <div class="border" id="border2_3">
+                    <div id="box2_3_3"></div>
+                    <div id="box2_3_4"></div>
+                </div>
+                <pre><code class="language-css">#box2_3_3 {
+    float: left;
+    width: 250px;
+    height: 200px;
+    border: 5px solid blue;
+}
+
+#box2_3_4 {
+    width: 300px;
+    height: 100px;
+    border: 10px dashed red;
+}
+
+#border2_3 {
+    overflow: auto;
+}
+/* 触发BFC有多种方式：
+（1）设置overflow属性为auto/sroll/hidden之一，
+（2）设置position为fixed/absolute之一，
+（3）设置为float，
+（4）设置display为inline-block/flex/grid之一 */</code></pre>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column">
+                <h4>（4）子元素触发BFC（解决“元素覆盖”+“高度塌陷”）</h4>
+                <div class="border">
+                    <div id="box2_4_1"></div>
+                    <div id="box2_4_2"></div>
+                </div>
+            </div>
+
+            <div class="column">
+                <h4>解决效果：</h4>
+                <div class="border">
+                    <div id="box2_4_3"></div>
+                    <div id="box2_4_4"></div>
+                </div>
+                <pre><code class="language-css">#box2_4_3 {
+    float: left;
+    width: 250px;
+    height: 200px;
+    border: 5px solid blue;
+}
+#box2_4_4 {
+    width: 300px;
+    height: 100px;
+    border: 10px dashed red;
+    overflow: auto;
+}</code></pre>
+            </div>
+        </div>
+
+        </section>
+
+        <script src="../asset/prism/prism.js"></script>
+</body>
+
+</html>

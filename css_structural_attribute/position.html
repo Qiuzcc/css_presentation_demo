@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>position定位属性探究</title>
+    <link rel="stylesheet" href="../asset/prism/prism.css">
+    <link rel="stylesheet" href="./position.css">
+</head>
+
+<body>
+    <div id='app'>
+
+        <h2 style="position: fixed; top: 0;">position定位属性探究，包括: relative、asbolute、fixed、sticky</h2>
+        <section class="wrap" style="margin-top: 100px;">
+            <h3>一、relative相对定位</h3>
+            <h4>（1）相对定位的锚点在元素的正中心；（2）relative不会脱离正常文档流；（3）relative会覆盖static定位（即默认定位）的元素</h4>
+            <div class="row">
+                <div class="column">
+                    <div class="border">
+                        <div class="box">盒子1</div>
+                        <div class="box" id="box2">盒子2</div>
+                        <div class="box" id="box3">盒子3</div>
+                    </div>
+                </div>
+                <div class="column">
+                    <pre><code class="language-css">#box2 {
+    position: relative;
+    left: 25%;
+    /* left的百分比是相对于父容器的width */
+    bottom: -100px;
+}</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section class="wrap">
+            <h3>二、absolute绝对定位</h3>
+            <h4>（1）定位锚点：absolute元素会相对于最近的非static定位的父元素进行定位；<br>
+                通过top、right、bottom、left四个属性来调整absolute元素相对于最近非static定位祖先的相对位置；这四个属性之一，没有设置时不会起作用，absolute元素会留在原地
+            </h4>
+            <div class="row">
+                <div class="column">
+                    <div class="border">
+                        <div class="box">盒子4</div>
+                        <div class="box" id="box5_3">盒子5</div>
+                        <div class="box">盒子6</div>
+                    </div>
+                    <div class="border">
+                        <pre><code class="language-css">#box5 {
+    position: absolute;
+    left: 0;
+}</code></pre>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="border" id="border5_4">
+                        <div class="box">盒子4</div>
+                        <div class="box" id="box5_4">盒子5</div>
+                        <div class="box">盒子6</div>
+                    </div>
+                    <div class="border">
+                        <pre><code class="language-css">.border{
+    position: relative;
+}
+#box5 {
+    position: absolute;
+    left: 0;
+    top: 100px;
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <h4>（2）absolute会脱离正常文档流，即absolute元素的位置会被后面的元素占用</h4>
+
+
+            <h4>（3）z轴：absolute元素脱离文档里流后会浮动在z轴上，可能会覆盖其它元素（如下图），可以通过z-index属性调整不同元素在z轴的位置关系</h4>
+            <div class="row">
+                <div class="column">
+                    <div class="border">
+                        <div class="box">盒子4</div>
+                        <div class="box" id="box5_1">盒子5</div>
+                        <div class="box">盒子6</div>
+                    </div>
+                    <div class="border">
+                        <pre><code class="language-css">#box5 {
+    position: absolute;
+}</code></pre>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="border">
+                        <div class="box">盒子4</div>
+                        <div class="box" id="box5_2">盒子5</div>
+                        <div class="box">盒子6</div>
+                    </div>
+                    <div class="border">
+                        <pre><code class="language-css">#box5 {
+    position: absolute;
+    z-index: -1;
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+            <h4>（4）当absolute元素的height和width被设置为auto时，可以通过top+bottom、left+right的组合来决定该元素的宽高度</h4>
+            <div class="row">
+                <div class="column">
+                    <div class="border" style="position: relative;">
+                        <div id="box2_4_1">absolute元素</div>
+                        <div class="box" style="height: 250px;">普通元素</div>
+                    </div>
+                    <div class="border">
+                        <pre><code class="language-css">#box2_4_1 {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 150px;
+    background-color: #fa8c16;
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="wrap">
+            <h3>三、fixed绝对定位（相对于浏览器窗口）</h3>
+            <h4>（1）定位锚点：浏览器窗口，通过top、right、bottom、left四个属性进行相对定位（必须设置其中两个属性，否则fixed元素无法被渲染）</h4>
+            <h4>（2）脱离正常文档流、z轴会产生覆盖（只覆盖static定位元素）</h4>
+            <h4>（3）如果不指定宽度，fixed元素的宽度默认等于内容宽度（即使元素原本是块级元素），效果示例见顶部一级标题</h4>
+            <div class="row">
+                <div class="column">
+                    <div class="border">
+                        <div class="box" id="box7">盒子7（fixed盒子）</div>
+                        <div class="box">盒子8</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <section class="wrap" style="margin-bottom: 100vh;">
+        <h3>四、sticky粘性定位</h3>
+        <h4>（1）常规情况下表现为position: static，发挥作用时表现类似于position: fixed</h4>
+        <h4>（2）在不超过父元素的范围内，与浏览器窗口（严格来说，是“最近滚动祖先”）保持指定的距离（一般通过top设定）</h4>
+        <h4>（3）当触发sticky，变成“fixed”元素时，会覆盖其它static定位的元素</h4>
+        <div class="row">
+            <div class="column">
+                <div class="border">
+                    <div class="box">普通元素</div>
+                    <div class="box" id="box4_1">sticky元素</div>
+                    <div class="box">普通元素</div>
+                </div>
+                <div class="border">
+                    <pre><code class="language-css">#box4_1 {
+    position: sticky;
+    top: 50px;
+    bottom: 100px;
+}</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="../asset/prism/prism.js"></script>
+</body>
+
+</html>

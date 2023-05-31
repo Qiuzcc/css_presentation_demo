@@ -1,0 +1,72 @@
+@import url('./common.css');
+
+.box {
+    width: 200px;
+    height: 200px;
+    display: grid;
+    place-items: center;
+}
+
+.box:first-child {
+    background-color: #fa8c16;
+}
+
+.box:nth-child(2) {
+    background-color: #a0d911;
+}
+
+.box:last-child {
+    background-color: #1677ff;
+}
+
+#box2 {
+    position: relative;
+    left: 25%;
+    /* left的百分比是相对于父容器的width */
+    bottom: -100px;
+}
+
+#box5_1 {
+    position: absolute;
+}
+
+#box5_2 {
+    position: absolute;
+    z-index: -1;
+}
+
+#box5_3 {
+    position: absolute;
+    left: 0;
+}
+
+#border5_4 {
+    position: relative;
+}
+
+#box5_4 {
+    position: absolute;
+    left: 0;
+    top: 100px;
+}
+
+#box7 {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+}
+
+#box2_4_1 {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 150px;
+    background-color: #fa8c16;
+}
+
+#box4_1 {
+    position: sticky;
+    top: 50px;
+    bottom: 100px;
+}

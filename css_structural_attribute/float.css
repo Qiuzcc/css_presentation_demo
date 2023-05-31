@@ -1,0 +1,127 @@
+@import url('./common.css');
+
+.column {
+    width: 600px;
+}
+
+/* #border1_1::after {
+    content: '';
+    display: block;
+    clear: both;
+} */
+
+#box1_1_1 {
+    border: 10px dashed red;
+    width: 300px;
+    height: 100px;
+}
+
+#box1_1_2 {
+    border: 5px solid blue;
+    width: 160px;
+    height: 80px;
+    float: left;
+}
+
+#box1_1_3 {
+    /* 用来消除box1_1_2的浮动，否则后面的元素会排列在蓝色div右边 */
+    /* clear: both; */
+}
+
+#box1_2_1 {
+    float: left;
+    border: 5px solid blue;
+    width: 160px;
+    height: 80px;
+    z-index: 1;
+    /* z-index无法解决float带来的元素遮盖问题 */
+}
+
+#box1_2_2 {
+    border: 10px dashed red;
+    width: 300px;
+    height: 100px;
+    z-index: 2;
+}
+
+#box1_3_1 {
+    width: 200px;
+    height: 100px;
+    float: left;
+    border: 5px solid blue;
+}
+
+#box1_3_2 {
+    width: 200px;
+    height: 100px;
+    float: left;
+    border: 5px dashed green;
+}
+
+#box1_3_3 {
+    clear: both;
+    /* 用来清除浮动 */
+}
+
+#box1_4_1 {
+    float: left;
+    border: 5px solid blue;
+}
+
+#box1_4_2 {
+    float: left;
+    border: 5px dashed green;
+}
+
+#box1_4_3 {
+    clear: both;
+    /* 用来清除浮动 */
+}
+
+#box2_1_1,
+#box2_1_3,
+#box2_2_1,
+#box2_2_3,
+#box2_3_1,
+#box2_3_3,
+#box2_4_1,
+#box2_4_3 {
+    float: left;
+    width: 250px;
+    height: 200px;
+    border: 5px solid blue;
+}
+
+#box2_1_2,
+#box2_1_4,
+#box2_2_2,
+#box2_2_4,
+#box2_3_2,
+#box2_3_4,
+#box2_4_2 {
+    width: 300px;
+    height: 100px;
+    border: 10px dashed red;
+}
+
+#box2_1_3_ {
+    clear: both;
+}
+
+#border2_2::after {
+    content: '';
+    display: block;
+    /* 只能为block，不能为inline-block */
+    clear: both;
+}
+
+#border2_3 {
+    overflow: auto;
+}
+
+#box2_4_4 {
+    width: 300px;
+    height: 100px;
+    border: 10px dashed red;
+    overflow: auto;
+}

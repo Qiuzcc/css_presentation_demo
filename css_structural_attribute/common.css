@@ -1,0 +1,27 @@
+body {
+    margin: 0;
+    padding: 0 10% 40px;
+}
+
+h2 {
+    text-align: center;
+}
+
+.wrap {
+    margin-bottom: 100px;
+}
+
+.row {
+    display: flex;
+    margin-bottom: 50px;
+}
+
+.column {
+    width: 400px;
+    margin-right: 96px;
+}
+
+.border {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    margin-bottom: 4px;
+}
