@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS动画</title>
+    <link rel="stylesheet" href="../asset/prism/prism.css">
+    <link rel="stylesheet" href="./transition_2_rotate.css">
+</head>
+
+<body>
+    <h2>transition示例2：翻牌效果</h2>
+    <h4>注：CSS动画指DOM元素的样式从一种向另一种平缓地过渡（而非瞬间变化），分为触发型（transtion）、主动型（animation+keyframe）两种</h4>
+    <h4>注：transition属于触发型动画，当DOM元素的状态发生指定的变化时，动画被触发</h4>
+    <h4>实现思路：</h4>
+    <h4>（1）用position定位脱离文档流的特点 + rotateY旋转180 用2个div元素组成卡片的正反面，包裹在一个父div容器中（发生旋转的是父容器）</h4>
+    <h4>（2）用backface-visibility属性将背面定义为不可见</h4>
+    <h4>（3）transform-style 规定如何在3D空间中呈现被嵌套的元素，必须设置为preserve-3d才能看到位于背面的子div</h4>
+    <h4>（4）在board的父容器设置perspective，定义3D效果</h4>
+    <h4>（5）在board上设置transtion，让样式过渡效果可见</h4>
+
+    <section class="flex_center">
+        <div class="column">
+            <div class="border">
+                <div class="board" style="transform: rotateY(0deg);">
+                    <div class="box front">
+                        <p class="btn_decrement">-</p>
+                        <p class="value_front">0</p>
+                        <p class="btn_increment">+</p>
+                    </div>
+                    <div class="box back">
+                        <p class="btn_decrement">-</p>
+                        <p class="value_back">0</p>
+                        <p class="btn_increment">+</p>
+                    </div>
+                </div>
+            </div>
+            <pre><code class="language-css">/* CSS */
+.border {
+    background-color: #b37feb;
+    height: 150px;
+    perspective: 300px;
+    /* 定义 3D 元素距视图的距离，当为元素定义 perspective 属性时，其子元素会获得透视效果，而不是元素本身 */
+}
+
+:root {
+    --board-height: 75px;
+    --board-width: 200px;
+}
+
+.board {
+    height: var(--board-height);
+    width: var(--board-width);
+    /* 因为两个子元素box都脱离文档流了，所以父容器无法正确计算宽度高度，需要自定义 */
+
+    transform-style: preserve-3d;
+    /* 子元素保留其3D位置（该属性规定如何在 3D 空间中呈现被嵌套的元素） */
+    /* 该属性必须设置，否则无法展示元素位于背面时的状态 */
+
+    transition: all 0.5s;
+}
+
+.box {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: var(--board-height);
+    width: var(--board-width);
+    background-color: white;
+    border-radius: 8px;
+    user-select: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+
+    position: absolute;
+    /* 利用绝对定位脱离文档流，让两个box重叠到一起 */
+
+    backface-visibility: hidden;
+    /* 将元素背面隐藏，表现为：转到背面时元素在屏幕中消失 */
+}
+
+.value_front,
+.value_back {
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: default;
+}
+
+.back {
+    transform: rotateY(180deg);
+    /* 将一个box转到背面 */
+}</code></pre>
+            <pre><code class="language-javascript">// js
+let count = 0
+let num = 0
+let angle = 0
+const num_board_front = document.querySelector('.value_front')
+const num_board_back = document.querySelector('.value_back')
+const board = document.querySelector('.board')
+
+function render() {
+    count++
+    if (count % 2 == 1) {
+        num_board_back.textContent = num
+    } else {
+        num_board_front.textContent = num
+    }
+    board.style.transform = `rotateY(${angle}deg)`
+}
+function increment() {
+    num++
+    angle += 180
+    render()
+}
+function decrement() {
+    num--
+    angle -= 180
+    render()
+}
+
+document.querySelector('.front .btn_decrement').addEventListener('click', decrement)
+document.querySelector('.front .btn_increment').addEventListener('click', increment)
+document.querySelector('.back .btn_decrement').addEventListener('click', decrement)
+document.querySelector('.back .btn_increment').addEventListener('click', increment)</code></pre>
+        </div>
+    </section>
+    <script>
+        let count = 0
+        let num = 0
+        let angle = 0
+        const num_board_front = document.querySelector('.value_front')
+        const num_board_back = document.querySelector('.value_back')
+        const board = document.querySelector('.board')
+
+        function render() {
+            count++
+            if (count % 2 == 1) {
+                num_board_back.textContent = num
+            } else {
+                num_board_front.textContent = num
+            }
+            board.style.transform = `rotateY(${angle}deg)`
+        }
+        function increment() {
+            num++
+            angle += 180
+            render()
+        }
+        function decrement() {
+            num--
+            angle -= 180
+            render()
+        }
+
+        document.querySelector('.front .btn_decrement').addEventListener('click', decrement)
+        document.querySelector('.front .btn_increment').addEventListener('click', increment)
+        document.querySelector('.back .btn_decrement').addEventListener('click', decrement)
+        document.querySelector('.back .btn_increment').addEventListener('click', increment)
+
+    </script>
+    <script src="../asset/prism/prism.js"></script>
+</body>
+
+</html>

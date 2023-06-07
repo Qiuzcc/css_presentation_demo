@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS动画</title>
+    <link rel="stylesheet" href="../asset/prism/prism.css">
+    <link rel="stylesheet" href="./transtion_1_click.css">
+</head>
+
+<body>
+    <h2>transition示例1：点击效果</h2>
+    <h4>注：CSS动画指DOM元素的样式从一种向另一种平缓地过渡（而非瞬间变化），分为触发型（transtion）、主动型（animation+keyframe）两种</h4>
+    <h4>注：transition属于触发型动画，当DOM元素的状态发生指定的变化时，动画被触发</h4>
+    <section class="flex_center">
+        <div class="column">
+            <div class="border">
+                <div class="box" id="btn">
+                    <p>点击一下</p>
+                </div>
+            </div>
+            <pre><code class="language-css">.box {
+    ...
+    transition: all 0.1s ease 0;
+    /* 参数依次为：设置动画效果的属性、动画持续时间、速度曲线、延迟时间 */
+}
+
+.active {
+    transform: scale3d(0.8, 0.8, 0.8)
+}</code></pre>
+            <pre><code class="language-javascript">const btn = document.getElementById('btn')
+btn.addEventListener('click', () => {
+    btn.classList.add('active')
+    const timeoutId = setTimeout(() => {
+        btn.classList.remove('active')
+        clearTimeout(timeoutId)
+    }, 100)
+})</code></pre>
+        </div>
+    </section>
+
+    <script>
+        const btn = document.getElementById('btn')
+        btn.addEventListener('click', () => {
+            btn.classList.add('active')
+            const timeoutId = setTimeout(() => {
+                btn.classList.remove('active')
+                clearTimeout(timeoutId)
+            }, 100)
+        })
+    </script>
+    <script src="../asset/prism/prism.js"></script>
+</body>
+
+</html>

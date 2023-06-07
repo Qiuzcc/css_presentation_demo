@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS动画</title>
+    <link rel="stylesheet" href="../asset/prism/prism.css">
+    <link rel="stylesheet" href="./animation.css">
+
+</head>
+
+<body>
+    <h2>CSS动画 - animation自定义动画示例</h2>
+    <section class="flex_center">
+        <div class="column">
+            <div class="border">
+                <div class="box"></div>
+            </div>
+            <pre><code class="language-css">.box {
+    animation: square_to_circle 1.5s infinite alternate;
+    /* 以上参数依次是：animation-name动画名称、 duration持续时间、  iteration-count运行次数、 animation-direction动画播放方向 */
+}
+
+@keyframes square_to_circle {
+    from {
+        width: 100px;
+        height: 100px;
+        border-radius: 0;
+        background-color: #a0d911;
+    }
+
+    to {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background-color: #722ed1;
+    }
+}</code></pre>
+        </div>
+    </section>
+
+    <script src="../asset/prism/prism.js"></script>
+</body>
+
+</html>
