@@ -20,16 +20,6 @@
 
 <br>
 
-## 截图示例
-
-<img src="https://qiuzcc-typora-images.oss-cn-shenzhen.aliyuncs.com/images/flex%E6%BC%94%E7%A4%BA.gif" alt="flex演示" style="zoom: 50%;" />
-
-<img src="https://qiuzcc-typora-images.oss-cn-shenzhen.aliyuncs.com/images/border%E6%BC%94%E7%A4%BA.gif" alt="border演示" style="zoom:50%;" />
-
-<img src="https://qiuzcc-typora-images.oss-cn-shenzhen.aliyuncs.com/images/background%E6%BC%94%E7%A4%BA.gif" alt="background演示" style="zoom:50%;" />
-
-<br>
-
 ## 目录
 
 ### flex
@@ -50,3 +40,14 @@
 - [border探究 ](https://css.timegogo.top/css_visual_attribute/border.html)
 - [cursor 鼠标光标 ](https://css.timegogo.top/css_visual_attribute/cursor.html)
 
+### CSS选择器
+- [伪类和伪元素选择器](https://css.timegogo.top/selector/selector_presentation.html)
+
+### CSS结构属性
+- [position定位属性](https://css.timegogo.top/css_structural_attribute/position.html)
+- [float浮动定位的特点 & 清除浮float副作用的方法](https://css.timegogo.top/css_structural_attribute/float.html)
+
+### CSS动画
+- [transition（触发型动画）示例1：按钮点击效果](https://css.timegogo.top/animation/transtion_1_click.html)
+- [transition（触发型动画）示例2：翻牌效果](https://css.timegogo.top/animation/transition_2_rotate.html)
+- [animation（自定义动画）示例](https://css.timegogo.top/animation/animation.html)
